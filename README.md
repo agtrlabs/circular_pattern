@@ -28,11 +28,12 @@ CircularPattern(
     },
     // dots is a list of PatternDot
     dots: const [
-        PatternDot(value: 'A'),
-        PatternDot(value: 'B'),
-        PatternDot(value: 'C'),
-        PatternDot(value: 'D'),
-        PatternDot(value: 'E'),
+        PatternDot(value: '1'),
+        PatternDot(value: '2'),
+        PatternDot(value: '3'),
+        PatternDot(value: '4'),
+        PatternDot(value: '5'),
+        PatternDot(value: '6'),
     ],
 
     //Optionally edit color and font themes with CircularPatternOptions()
