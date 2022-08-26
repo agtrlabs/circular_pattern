@@ -22,9 +22,9 @@ class CircularPattern extends StatefulWidget {
     this.onStart,
     this.options = const CircularPatternOptions(),
     this.dots = const [
-      PatternDot(value: 'A'),
-      PatternDot(value: 'B'),
-      PatternDot(value: 'C')
+      PatternDot(value: '1'),
+      PatternDot(value: '2'),
+      PatternDot(value: '3')
     ],
     required this.onComplete,
   }) : super(key: key);

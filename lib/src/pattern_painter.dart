@@ -65,13 +65,14 @@ class PatternPainter extends CustomPainter {
       //draw cirlcles
       for (int i = 0; i < dots.length; ++i) {
         final circlePos = circlePosition(i);
+        bool isSelected = used.contains(i);
         canvas.drawCircle(
           circlePos,
           pointRadius,
-          showInput && used.contains(i) ? selectedPaint : circlePaint,
+          showInput && isSelected ? selectedPaint : circlePaint,
         );
 
-        drawText(dots[i].value, canvas, pointRadius, circlePos);
+        drawText(dots[i].value, canvas, pointRadius, circlePos, isSelected);
       }
     }
   }
@@ -79,10 +80,13 @@ class PatternPainter extends CustomPainter {
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => true;
 
-  void drawText(text, canvas, width, offset) {
+  void drawText(String text, Canvas canvas, double width, Offset offset,
+      bool isSelected) {
     final fontSize = width * 1.2;
-    
-    final textStyle = circularPatternOptions.primaryTextStyle.copyWith(fontSize: fontSize);
+
+    final textStyle = isSelected
+        ? circularPatternOptions.selectedTextStyle.copyWith(fontSize: fontSize)
+        : circularPatternOptions.primaryTextStyle.copyWith(fontSize: fontSize);
     final textSpan = TextSpan(
       text: text,
       style: textStyle,

@@ -3,7 +3,7 @@ Circular Pattern is a flutter package similar to mobile pattern lock which dots 
 
 ## Features
 
-[x] A string symbol can be inserted in the middle of the pattern points
+[x] A string symbol can be inserted to the middle of the pattern points
 [x] Editable font and color theme 
 
 ## Getting started
@@ -22,7 +22,7 @@ CircularPattern(
     },
     onComplete: (List<PatternDot> input) {
     // called when connected minimum amount of dots
-    // input is a list of pattern dots
+    // input is a list of PatternDot
     },
     // dots is a list of PatternDot
     dots: const [

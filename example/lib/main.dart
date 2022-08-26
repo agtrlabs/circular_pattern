@@ -31,7 +31,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String input = '';
-  final List<String> dotList = ['A', 'B', 'C', 'D'];
+  final List<String> dotList = ['1', '2', '3', '4', '5', '6'];
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 textAlign: TextAlign.center,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 300,
             ),
             Expanded(
@@ -72,18 +72,19 @@ class _MyHomePageState extends State<MyHomePage> {
                       input = text;
                     });
                   },
-                  dots: const [
-                    PatternDot(value: 'A'),
-                    PatternDot(value: 'K'),
-                    PatternDot(value: 'M'),
-                    PatternDot(value: 'L'),
-                    PatternDot(value: 'E'),
-                    PatternDot(value: 'B'),
-                  ],
+                  dots: dotList
+                      .map<PatternDot>((e) => PatternDot(value: e))
+                      .toList(),
                   options: const CircularPatternOptions(
+                      primaryDotColor: Color(0xFFEEEEEE),
+                      selectedDotColor: Color.fromARGB(255, 17, 123, 180),
                     primaryTextStyle: TextStyle(
                       color: Color.fromARGB(255, 22, 22, 22),
-                      fontFamily: 'Alegreya',
+                        fontFamily: 'Alegreya',
+                      ),
+                      selectedTextStyle: TextStyle(
+                        color: Color.fromARGB(255, 222, 222, 222),
+                        fontFamily: 'Alegreya',
                     )
                   ),
                 ),
