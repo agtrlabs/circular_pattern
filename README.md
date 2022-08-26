@@ -1,15 +1,17 @@
-Circular Pattern is a flutter package similar to mobile pattern lock which dots designed in a circular form
+# circular_pattern
 
+Circular Pattern is a flutter package similar to mobile pattern lock which dots designed in a circular form
 
 ## Features
 
-[x] A string symbol can be inserted to the middle of the pattern points
-[x] Editable font and color theme 
+- A string symbol can be inserted to the middle of the pattern points
+- Editable font and color theme 
 
 ## Getting started
 
 Import package and add CircularPattern to the widget tree.
 
+![Preview](preview.gif)
 
 ## Usage
 
