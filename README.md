@@ -15,7 +15,7 @@ Circular Pattern is a flutter package similar to mobile pattern lock which dots 
 
 Import package and add CircularPattern to the widget tree.
 
-<img src="https://gitlab.com/turkiye/flutter/circular_pattern/-/raw/b94150aa7fe2fee5ec5e8dce71ecbe0b8e05c0e6/preview.gif" width="300">
+<img src="https://github.com/agtrlabs/circular_pattern/blob/1023a8489c0c2f94e341fc51040c6ee9ea5ad5b0/preview.gif" width="300">
 
 ## Usage
 
