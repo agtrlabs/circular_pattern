@@ -1,5 +1,9 @@
 # circular_pattern
 
+[![pub package][pub_badge]][pub_link] 
+[![License: MIT][license_badge]][license_link]
+
+
 Circular Pattern is a flutter package similar to mobile pattern lock which dots designed in a circular form
 
 ## Features
@@ -40,3 +44,8 @@ CircularPattern(
     options: const CircularPatternOptions(),
 ),
 ```
+
+[license_badge]: https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge
+[license_link]: https://opensource.org/licenses/MIT
+[pub_badge]: https://img.shields.io/pub/v/circular_pattern.svg?style=for-the-badge
+[pub_link]: https://pub.dev/packages/circular_pattern
