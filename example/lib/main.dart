@@ -44,10 +44,10 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(10.0),
               child: Text(
-                'Your Input:\n${input}',
-                style: TextStyle(fontSize: 50),
+                'Your Input:\n$input',
+                style: const TextStyle(fontSize: 50),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -97,5 +97,4 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  void _info() {}
 }
