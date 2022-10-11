@@ -44,10 +44,10 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(10.0),
               child: Text(
-                'Your Input:\n${input}',
-                style: TextStyle(fontSize: 50),
+                'Your Input:\n$input',
+                style: const TextStyle(fontSize: 50),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -58,6 +58,15 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Container(
                 color: Colors.blue.shade200,
                 child: CircularPattern(
+                  onChange: ((result) {
+                    String text = '';
+                    for (var element in result) {
+                      text += element.value;
+                    }
+                    setState(() {
+                      input = text;
+                    });
+                  }),
                   onStart: () {
                     setState(() {
                       input = '';
@@ -71,6 +80,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     setState(() {
                       input = text;
                     });
+                    Future.delayed(
+                        const Duration(seconds: 2),
+                        () => setState(() {
+                              input = '';
+                            }));
                   },
                   dots: dotList
                       .map<PatternDot>((e) => PatternDot(value: e))
@@ -78,15 +92,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   options: const CircularPatternOptions(
                       primaryDotColor: Color(0xFFEEEEEE),
                       selectedDotColor: Color.fromARGB(255, 17, 123, 180),
-                    primaryTextStyle: TextStyle(
-                      color: Color.fromARGB(255, 22, 22, 22),
+                      primaryTextStyle: TextStyle(
+                        color: Color.fromARGB(255, 22, 22, 22),
                         fontFamily: 'Alegreya',
                       ),
                       selectedTextStyle: TextStyle(
                         color: Color.fromARGB(255, 222, 222, 222),
                         fontFamily: 'Alegreya',
-                    )
-                  ),
+                      )),
                 ),
               ),
             ),
@@ -96,6 +109,4 @@ class _MyHomePageState extends State<MyHomePage> {
 // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
-
-  void _info() {}
 }
