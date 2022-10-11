@@ -9,49 +9,55 @@ class CircularPattern extends StatefulWidget {
   // onStart callback function is called when user starts to draw a new pattern
   final Function()? onStart;
 
-  /// onComplete function is called when user selected at least [minInputLength] of points.
+  /// onComplete function is called when user selects at least [minInputLength] of points and releases panning the widget.
   final Function(List<PatternDot> input) onComplete;
 
+  /// onChange function is called when user selects a new point.
+  final Function(List<PatternDot> input)? onChange;
+
   // minimum acceptable input length
-  final int minInputLength = 3;
+  final int minInputLength;
 
   final List<PatternDot> dots;
+
+  // style options 
   final CircularPatternOptions options;
+
+  // radius of PatternDot Circle
+  final double pointRadius;
+
   const CircularPattern({
     Key? key,
-    this.onStart,
-    this.options = const CircularPatternOptions(),
     this.dots = const [
       PatternDot(value: '1'),
       PatternDot(value: '2'),
       PatternDot(value: '3')
     ],
+    this.minInputLength = 3,
     required this.onComplete,
+    this.onChange,
+    this.onStart,
+    this.options = const CircularPatternOptions(),
+    this.pointRadius = 30,
   }) : super(key: key);
 
   @override
-  _CircularPatternState createState() => _CircularPatternState();
+  createState() => _CircularPatternState();
 }
 
 class _CircularPatternState extends State<CircularPattern> {
+  // index list of used points
   List<int> used = [];
+
   Offset? currentPoint;
   bool started = false;
-  double pointRadius = 30;
-  void startInput() {
-    // onStart
-    if (!started) {
-      started = true;
-      widget.onStart?.call();
-    }
-  }
-
+  late double pointRadius;
   @override
   Widget build(BuildContext context) {
+    pointRadius = widget.pointRadius;
     return LayoutBuilder(
       builder: ((context, constraints) {
         //RenderBox referenceBox = context.findRenderObject() as RenderBox;
-
         pointRadius =
             constraints.biggest.shortestSide / (widget.dots.length + 1);
         return GestureDetector(
@@ -79,11 +85,13 @@ class _CircularPatternState extends State<CircularPattern> {
 
             Offset circlePosition(int n) => calcCirclePosition(
                 n, referenceBox.size, widget.dots.length, pointRadius);
+
             for (int i = 0; i < widget.dots.length; ++i) {
               final toPoint = (circlePosition(i) - localPosition).distance;
               if (!used.contains(i) && toPoint < pointRadius) {
                 used.add(i);
                 startInput();
+                notifyOnChange(used);
               }
             }
             setState(() {
@@ -108,5 +116,21 @@ class _CircularPatternState extends State<CircularPattern> {
         );
       }),
     );
+  }
+
+  void notifyOnChange(List<int> used) {
+    List<PatternDot> dotList = [];
+    for (var element in used) {
+      dotList.add(widget.dots[element]);
+    }
+    widget.onChange?.call(dotList);
+  }
+
+  void startInput() {
+    // onStart
+    if (!started) {
+      started = true;
+      widget.onStart?.call();
+    }
   }
 }
