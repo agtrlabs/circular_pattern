@@ -1,6 +1,6 @@
 name: circular_pattern
 description: An alternative data input widget for flutter, consisting of circular dots.
-version: 0.1.1+4
+version: 0.1.0
 homepage: https://github.com/agtrlabs/circular_pattern.git
 
 environment:
