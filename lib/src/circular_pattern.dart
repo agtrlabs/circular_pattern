@@ -5,6 +5,9 @@ import 'package:circular_pattern/src/pattern_painter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+/// CircularPatter is the visual widget to be added to the widget tree
+/// Widget tries to automatically scale according to its area. 
+/// Must define at least 3 PatterDots
 class CircularPattern extends StatefulWidget {
   // onStart callback function is called when user starts to draw a new pattern
   final Function()? onStart;
@@ -15,19 +18,19 @@ class CircularPattern extends StatefulWidget {
   /// onChange function is called when user selects a new point.
   final Function(List<PatternDot> input)? onChange;
 
-  // minimum acceptable input length
+  /// minimum acceptable input length
   final int minInputLength;
 
   final List<PatternDot> dots;
 
-  // style options 
+  /// Style options 
   final CircularPatternOptions options;
 
-  // radius of PatternDot Circle
+  /// Radius of the PatternDot Circle
   final double pointRadius;
 
   const CircularPattern({
-    Key? key,
+    super.key,
     this.dots = const [
       PatternDot(value: '1'),
       PatternDot(value: '2'),
@@ -39,7 +42,10 @@ class CircularPattern extends StatefulWidget {
     this.onStart,
     this.options = const CircularPatternOptions(),
     this.pointRadius = 30,
-  }) : super(key: key);
+  }): assert(
+          dots.length >= 3,
+          'Must have At least 3 PatternDots',
+        );
 
   @override
   createState() => _CircularPatternState();
