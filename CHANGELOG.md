@@ -1,3 +1,8 @@
+## 0.1.1
+
+* Update documentation
+
+
 ## 0.0.3
 
 * add Onchange property
